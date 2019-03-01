@@ -13,7 +13,7 @@
 #     $ bin/compile <build-dir> <cache-dir> <env-path>
 
 # Fail fast and fail hard.
-set -eo pipefail
+set -exo pipefail
 
 # Boostrap the Buildpack Standard Library.
 export BPLOG_PREFIX="buildpack.python"
