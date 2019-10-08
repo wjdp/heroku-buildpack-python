@@ -6,6 +6,7 @@
   - Add Tests
   - Test for Pysqlite
   - base Python3 file corrected
+  - 3.6 Python Formulas updated
 - Test staged binaries on Travis
 - Bug fix: pipenv no longer installs twice on CI
 - Add support for staging binary testing
