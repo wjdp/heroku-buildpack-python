@@ -8,7 +8,11 @@
   - base Python3 file corrected
   - Python formulas updated:
     - 3.7.4
+<<<<<<< HEAD
     - 3.6
+=======
+    - 3.6.x
+>>>>>>> update changelog
 - Test staged binaries on Travis
 - Bug fix: pipenv no longer installs twice on CI
 - Add support for staging binary testing
