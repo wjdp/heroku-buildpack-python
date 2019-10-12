@@ -2,12 +2,11 @@
 
 # Master
 
-- Sqlite fix:
-  - base Python3 file corrected
-- Test staged binaries on Travis
 - Sqlite3 Update:
   - Add Tests
   - Test for Pysqlite
+  - base Python3 file corrected
+- Test staged binaries on Travis
 - Bug fix: pipenv no longer installs twice on CI
 - Add support for staging binary testing
 --------------------------------------------------------------------------------
