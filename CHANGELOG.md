@@ -7,7 +7,7 @@
   - Test for Pysqlite
   - base Python3 file corrected
   - Python formulas updated:
-    - 3.7.4
+    - 3.7
     - 3.6
 - Test staged binaries on Travis
 - Bug fix: pipenv no longer installs twice on CI
