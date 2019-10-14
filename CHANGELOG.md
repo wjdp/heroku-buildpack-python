@@ -5,7 +5,7 @@
 - Sqlite3 Update:
   - Add Tests
   - Test for Pysqlite
-  - base Python3 file corrected
+  - base Python3 and Python2 file corrected
   - Python formulas updated:
     - 3.7
     - 3.6
