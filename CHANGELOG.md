@@ -10,6 +10,7 @@
     - 3.7
     - 3.6
     - 3.5
+    - 3.4
     - 2.7
 - Test staged binaries on Travis
 - Bug fix: pipenv no longer installs twice on CI
