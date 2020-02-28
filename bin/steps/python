@@ -126,7 +126,7 @@ if [ ! "$SKIP_INSTALL" ]; then
   hash -r
 fi
 
-ENSUREPIP_VERSION = "$(/app/.heroku/python/bin/python -m ensurepip --version)"
+ENSUREPIP_VERSION = $(/app/.heroku/python/bin/python -m ensurepip --version)
 echo ${ENSUREPIP_VERSION}
 
 # # Testing ensurepip bootstrapping
