@@ -136,10 +136,10 @@ fi
 #   fi
 # else
 
-echo "pip ${PIP_UPDATE}"
-echo $(python -m ensurepip --version)
+TARGET_PIP = "pip ${PIP_UPDATE}"
+ENSURED_PIP = $(python -m ensurepip --version)
 
-if [[ $(python -m ensurepip --version) -ne "pip ${PIP_UPDATE}" ]]; then
+if [[ TARGET_PIP -ne ENSURED_PIP ]]; then
   $(python -m ensurepip --upgrade)
 fi
 
