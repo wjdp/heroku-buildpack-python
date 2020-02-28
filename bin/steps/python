@@ -126,8 +126,8 @@ if [ ! "$SKIP_INSTALL" ]; then
   hash -r
 fi
 
-ENSUREPIP_VERSION = $(/app/.heroku/python/bin/python -m ensurepip --version)
-echo ${ENSUREPIP_VERSION}
+# ENSUREPIP_VERSION = $(/app/.heroku/python/bin/python -m ensurepip --version)
+# echo ${ENSUREPIP_VERSION}
 
 # # Testing ensurepip bootstrapping
 # if [[ /app/.heroku/python/bin/pip3 --version ]]; then
@@ -136,28 +136,32 @@ echo ${ENSUREPIP_VERSION}
 #   fi
 # else
 
-# Heroku uses the get-pip utility maintained by the Python community to vendor Pip.
-# https://github.com/pypa/get-pip
-GETPIP_URL="https://lang-python.s3.amazonaws.com/etc/get-pip.py"
-GETPIP_PY="${TMPDIR:-/tmp}/get-pip.py"
-
-if ! curl -s "${GETPIP_URL}" -o "$GETPIP_PY" &> /dev/null; then
-    mcount "failure.python.get-pip"
-    echo "Failed to pull down get-pip"
-    exit 1
+if [[ python -m ensurepip --version != "pip $PIP_UPDATE" ]]; then
+  python -m ensurepip --upgrade
 fi
 
-# If Pip isn't up to date:
-if [ "$FRESH_PYTHON" ] || [[ ! $(pip --version) == *$PIP_UPDATE* ]]; then
+# # Heroku uses the get-pip utility maintained by the Python community to vendor Pip.
+# # https://github.com/pypa/get-pip
+# GETPIP_URL="https://lang-python.s3.amazonaws.com/etc/get-pip.py"
+# GETPIP_PY="${TMPDIR:-/tmp}/get-pip.py"
 
-  puts-step "Installing pip"
+# if ! curl -s "${GETPIP_URL}" -o "$GETPIP_PY" &> /dev/null; then
+#     mcount "failure.python.get-pip"
+#     echo "Failed to pull down get-pip"
+#     exit 1
+# fi
 
-  # Remove old installations.
-  rm -fr /app/.heroku/python/lib/python*/site-packages/pip-*
-  rm -fr /app/.heroku/python/lib/python*/site-packages/setuptools-*
+# # If Pip isn't up to date:
+# if [ "$FRESH_PYTHON" ] || [[ ! $(pip --version) == *$PIP_UPDATE* ]]; then
 
-  /app/.heroku/python/bin/python "$GETPIP_PY" pip=="$PIP_UPDATE" &> /dev/null
-  /app/.heroku/python/bin/pip install "$ROOT_DIR/vendor/setuptools-39.0.1-py2.py3-none-any.whl" &> /dev/null
+#   puts-step "Installing pip"
+
+#   # Remove old installations.
+#   rm -fr /app/.heroku/python/lib/python*/site-packages/pip-*
+#   rm -fr /app/.heroku/python/lib/python*/site-packages/setuptools-*
+
+#   /app/.heroku/python/bin/python "$GETPIP_PY" pip=="$PIP_UPDATE" &> /dev/null
+#   /app/.heroku/python/bin/pip install "$ROOT_DIR/vendor/setuptools-39.0.1-py2.py3-none-any.whl" &> /dev/null
 fi
 
 
