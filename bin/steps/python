@@ -136,6 +136,9 @@ fi
 #   fi
 # else
 
+echo "pip ${PIP_UPDATE}"
+echo $(python -m ensurepip --version)
+
 if [[ $(python -m ensurepip --version) -ne "pip ${PIP_UPDATE}" ]]; then
   $(python -m ensurepip --upgrade)
 fi
