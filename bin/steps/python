@@ -139,7 +139,7 @@ fi
 TARGET_PIP = "pip ${PIP_UPDATE}"
 ENSURED_PIP = $(python -m ensurepip --version)
 
-if [[ TARGET_PIP -ne ENSURED_PIP ]]; then
+if [[ TARGET_PIP != ENSURED_PIP ]]; then
   $(python -m ensurepip --upgrade)
 fi
 
