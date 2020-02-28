@@ -126,14 +126,16 @@ if [ ! "$SKIP_INSTALL" ]; then
   hash -r
 fi
 
+ENSUREPIP_VERSION = "$(app/.heroku/python/bin/pip3 --version)"
+echo ${ENSUREPIP_VERSION}
+
 # Testing ensurepip bootstrapping
 if [[ /app/.heroku/python/bin/pip3 --version ]]; then
   if [[ /app/.heroku/python/bin/pip3 --version | grep -q $PIP_UPDATE ]]
     /app/.heroku/python -m ensurepip --upgrade
   fi
 else
-
-
+if
   # Heroku uses the get-pip utility maintained by the Python community to vendor Pip.
   # https://github.com/pypa/get-pip
   GETPIP_URL="https://lang-python.s3.amazonaws.com/etc/get-pip.py"
