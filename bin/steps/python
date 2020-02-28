@@ -140,7 +140,7 @@ TARGET_PIP="pip ${PIP_UPDATE}"
 ENSURED_PIP=$(python -m ensurepip --version)
 
 if [[ $TARGET_PIP != $ENSURED_PIP ]]; then
-  $(python -m ensurepip --upgrade)
+  /app/.heroku/python/bin/python -m ensurepip --upgrade
 fi
 
 # # Heroku uses the get-pip utility maintained by the Python community to vendor Pip.
