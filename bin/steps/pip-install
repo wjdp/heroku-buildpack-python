@@ -38,6 +38,10 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         mcount "failure.none-version"
     fi
 
+    echo $(ls app/.heroku/python/)
+
+    echo $(pip --version)
+
     if [ ! -f "$BUILD_DIR/.heroku/python/bin/pip" ]; then
         exit 1
     fi
