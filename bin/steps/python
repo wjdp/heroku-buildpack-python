@@ -136,8 +136,8 @@ fi
 #   fi
 # else
 
-if [[ $(python -m ensurepip --version) -ne "pip $PIP_UPDATE" ]]; then
-  python -m ensurepip --upgrade
+if [[ $(python -m ensurepip --version) -ne "pip ${PIP_UPDATE}" ]]; then
+  $(python -m ensurepip --upgrade)
 fi
 
 # # Heroku uses the get-pip utility maintained by the Python community to vendor Pip.
