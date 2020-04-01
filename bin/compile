@@ -19,6 +19,11 @@ set -eo pipefail
 export BPLOG_PREFIX="buildpack.python"
 export BUILDPACK_LOG_FILE=${BUILDPACK_LOG_FILE:-/dev/null}
 
+echo "PRECOMPILE TIME"
+export SWIG_LIB=$BUILD_DIR/.apt/usr/share/swig3.0
+echo "SWIG_LIB=$SWIG_LIB"
+echo $(ls $SWIG_LIB)
+
 [ "$BUILDPACK_XTRACE" ] && set -o xtrace
 
 # Prepend proper path for old-school virtualenv hackery.
