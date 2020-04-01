@@ -19,11 +19,6 @@ set -eo pipefail
 export BPLOG_PREFIX="buildpack.python"
 export BUILDPACK_LOG_FILE=${BUILDPACK_LOG_FILE:-/dev/null}
 
-echo "PRECOMPILE TIME"
-export SWIG_LIB=$BUILD_DIR/.apt/usr/share/swig3.0
-echo "SWIG_LIB=$SWIG_LIB"
-echo $(ls $SWIG_LIB)
-
 [ "$BUILDPACK_XTRACE" ] && set -o xtrace
 
 # Prepend proper path for old-school virtualenv hackery.
@@ -39,6 +34,11 @@ ENV_DIR=$3
 
 # Export Path variables, for use in sub-scripts.
 export BUILD_DIR CACHE_DIR ENV_DIR
+
+echo "PRECOMPILE TIME"
+export SWIG_LIB=$BUILD_DIR/.apt/usr/share/swig3.0
+echo "SWIG_LIB=$SWIG_LIB"
+echo $(ls $SWIG_LIB)
 
 # Set the Buildpack's internet target for downloading Python distributions.
 # The user can provide BUILDPACK_VENDOR_URL to specify a custom target.
